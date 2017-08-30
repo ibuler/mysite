@@ -18,26 +18,11 @@ from django.contrib import admin
 
 from django.http import HttpResponse
 from django.shortcuts import render
-
-
-def index(request):
-    return render(request, "index.html")
-
-
-def index2(request):
-    return render(request, "index2.html")
-
-
-def hello(request):
-    return HttpResponse('Hello world')
+from . import views
 
 
 urlpatterns = [
-    url(r'^$', index),
-    url(r'^index2/$', index2),
-    url(r'^hello$', hello),
-    url(r'^polls/', include("polls.urls")),
-    url(r'^books/', include("books.urls")),
+    url(r'^publisher/add/$', views.publisher_add),
 
 ]
 

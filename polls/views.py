@@ -1,3 +1,4 @@
+import csv
 from django.shortcuts import render, get_object_or_404, reverse
 
 from django.http import HttpResponse, HttpResponseRedirect
@@ -39,3 +40,15 @@ def vote(request, question_id):
             # with POST data. This prevents data from being posted twice if a
             # user hits the Back button.
             return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def down_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['First row', 'Foo', 'Bar', 'Baz'])
+    writer.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
+
+    return response

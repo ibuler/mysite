@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title> {% block title %} {% endblock %}</title>
+	{% include '_head_css_js.html' %}
+</head>
+
+<body>
+{% include '_header.html' %}
+{% block content %}
+
+{% endblock %}
+{% include '_footer.html' %}
+</body>
+</html>

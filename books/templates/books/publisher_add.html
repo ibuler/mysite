@@ -1,0 +1,21 @@
+{% load bootstrap3 %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<form method="post" class="form">
+	{% csrf_token %}
+	<div class="container">
+		<h1>添加</h1>
+		{% bootstrap_form form %}
+		{% buttons %}
+		<button type="submit" class="btn btn-primary">
+			{% bootstrap_icon "star" %} Submit
+		</button>
+		{% endbuttons %}
+	</div>
+</form>
+</html>
