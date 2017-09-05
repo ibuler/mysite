@@ -33,6 +33,7 @@ def hello(request):
 
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', index),
     url(r'^index2/$', index2),
     url(r'^hello$', hello),

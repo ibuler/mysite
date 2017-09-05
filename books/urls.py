@@ -23,6 +23,6 @@ from . import views
 
 urlpatterns = [
     url(r'^publisher/add/$', views.publisher_add),
-
+    url(r'^publisher/([0-9]+)/update/$', views.publisher_update),
 ]
 

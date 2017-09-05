@@ -6,7 +6,7 @@ class Publisher(models.Model):
     address = models.CharField(max_length=50)
     city = models.CharField(max_length=60)
     state_province = models.CharField(max_length=30)
-    country = models.CharField(max_length=50)
+    country = models.CharField(max_length=50, default="中国")
     website = models.URLField()
 
     def __str__(self):
@@ -23,7 +23,7 @@ class Author(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, verbose_name="名称")
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField()
