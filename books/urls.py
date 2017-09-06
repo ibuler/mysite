@@ -20,9 +20,17 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from . import views
 
+app_name = "books"
 
 urlpatterns = [
+    url(r'^publisher/$', views.PublisherList.as_view(), name="publisher-list"),
+    url(r'^publisher/(?P<pk>[0-9]+)/$', views.PublisherDetail.as_view(), name="publisher-detail"),
     url(r'^publisher/add/$', views.publisher_add),
     url(r'^publisher/([0-9]+)/update/$', views.publisher_update),
+    url(r'^author/$', views.AuthorList.as_view(), name="author-list"),
+    url(r'^author/add/$', views.AuthorCreate.as_view(), name="author-create"),
+    url(r'^author/(?P<pk>[0-9]+)/$', views.AuthorDetail.as_view(), name="author-detail"),
+    url(r'^author/(?P<pk>[0-9]+)/update/$', views.AuthorUpdate.as_view(), name="author-update"),
+    url(r'^author/(?P<pk>[0-9]+)/delete/$', views.AuthorDelete.as_view(), name="author-delete"),
 ]
 

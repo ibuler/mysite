@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 class Publisher(models.Model):
@@ -20,6 +21,9 @@ class Author(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.first_name, self.last_name)
+
+    def get_absolute_url(self):
+        return reverse('books:author-detail', kwargs={'pk': self.pk})
 
 
 class Book(models.Model):

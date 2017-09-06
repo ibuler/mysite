@@ -1,0 +1,7 @@
+<h1>确认删除 {{ object.last_name }}?</h1>
+
+<form method="post">
+	{% csrf_token %}
+	<input type="submit" value="确认">
+
+</form>

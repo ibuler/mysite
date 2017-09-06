@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Authors </h2>
+{% if messages %}
+<ul>
+
+	{% for message in messages %}
+	<li>{{ message | safe }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+<ul>
+	{% for author in object_list %}
+	<li>{{ author.first_name }} {{ author.last_name}}</li>
+	{% endfor %}
+</ul>
+{% endblock %}

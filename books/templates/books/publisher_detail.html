@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Publisher {{ publisher.name }} detail!</h2>
+<ul>
+	<li>名称: {{ publisher.name }}</li>
+	<li>地址: {{ publisher.address }}</li>
+	<li>城市: {{ publisher.city }}</li>
+	<li>国家: {{ publisher.country }}</li>
+</ul>
+<ul>
+	书籍：
+	{% for book in book_list %}
+	{{ book.title }}
+	{% endfor %}
+</ul>
+{% endblock %}

@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from . import views
+
 
 def index(request):
     return render(request, "index.html")
@@ -39,6 +41,7 @@ urlpatterns = [
     url(r'^hello$', hello),
     url(r'^polls/', include("polls.urls")),
     url(r'^books/', include("books.urls")),
-
+    url(r'^about/$', views.AboutView.as_view()),
+    url(r'^view/$', views.MyView.as_view()),
 ]
 

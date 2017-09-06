@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Author {{ object.name }} detail!</h2>
+<ul>
+	<li>姓名: {{ object.first_name }} {{ object.last_name }}</li>
+	<li>邮箱: {{ object.city }}</li>
+</ul>
+{% endblock %}
