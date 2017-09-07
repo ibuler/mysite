@@ -15,12 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
 
 from django.http import HttpResponse
 from django.shortcuts import render
 from . import views
+from . import api
 
 app_name = "books"
+
+router = DefaultRouter()
+router.register(r'api/authors', api.AuthorViewSet)
 
 urlpatterns = [
     url(r'^publisher/$', views.PublisherList.as_view(), name="publisher-list"),
@@ -28,9 +33,14 @@ urlpatterns = [
     url(r'^publisher/add/$', views.publisher_add),
     url(r'^publisher/([0-9]+)/update/$', views.publisher_update),
     url(r'^author/$', views.AuthorList.as_view(), name="author-list"),
+    # url(r'^api/author/$', api.AuthorListApi.as_view(), name="api-author-list"),
+    # url(r'^api/author/(?P<pk>[0-9]+)/$', api.AuthorDetailApi.as_view(), name="api-author-detail"),
     url(r'^author/add/$', views.AuthorCreate.as_view(), name="author-create"),
-    url(r'^author/(?P<pk>[0-9]+)/$', views.AuthorDetail.as_view(), name="author-detail"),
     url(r'^author/(?P<pk>[0-9]+)/update/$', views.AuthorUpdate.as_view(), name="author-update"),
     url(r'^author/(?P<pk>[0-9]+)/delete/$', views.AuthorDelete.as_view(), name="author-delete"),
+]
+
+urlpatterns += [
+    url(r'^', include(router.urls)),
 ]
 
